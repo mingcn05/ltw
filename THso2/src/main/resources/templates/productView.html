@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Products</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <table cellpadding="5" border=1>
+            <tr valign="bottom">
+                <td align="left"><b>Code</b></td>
+                <td align="left"><b>Description</b></td>
+                <td align="left"><b>Price</b></td>
+                <td align="left"></td>
+                <td align="left"></td>
+            </tr>
+            <th:block th:each="product : ${products}">
+	            <tr valign="top">
+	                <td th:text="${product.code}"></td>
+	                <td th:text="${product.description}"></td>
+	                <td th:text="${product.price}"></td>
+	                <td><a th:href="@{/getProduct(code=${product.code})}">
+	                        Edit</a></td>
+	                <td><a th:href="@{/getProductDelete(code=${product.code})}">
+	                        Delete</a ></td>
+	            </tr>
+            </th:block>
+        </table>
+        <a  th:href="@{/getProduct(code=null)}" style="margin-top: 20px; display: block" href="updateProduct.jsp"><button>Add product</button></a>
+    </body>
+</html>
